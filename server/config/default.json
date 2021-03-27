@@ -1,0 +1,34 @@
+{
+  "host": "localhost",
+  "port": "PORT",
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "JWT_SECRET",
+    "authStrategies": [
+      "jwt"
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://zenchat.app",
+      "issuer": "zenchat",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "oauth": {
+      "redirect": "/",
+      "github": {
+        "key": "GITHUB_CLIENT_ID",
+        "secret": "GITHUB_CLIENT_SECRET"
+      }
+    }
+  },
+  "mongodb": "mongodb://localhost:27017/zenchat_server"
+}

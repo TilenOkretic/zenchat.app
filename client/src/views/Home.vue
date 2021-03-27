@@ -15,13 +15,6 @@
         </svg>
       </Button>
 
-      <pre v-if="user && !loading" class="txt-light">{{
-        JSON.stringify(user, null, 2)
-      }}</pre>
-
-      <Button v-if="user && !loading" class="mt-4" @click.native="logout()">
-        <span>Log out</span>
-      </Button>
 
       <Loading v-if="loading"></Loading>
     </div>
@@ -34,9 +27,12 @@
   import Button from "@/components/Button";
   import Loading from "@/components/Loading";
 
+  import { watch } from '@vue/composition-api';
+
   import {
     useActions,
-    useState
+    useState,
+    useRouter
   } from "@u3u/vue-hooks";
 
   export default {
@@ -46,23 +42,30 @@
       Loading,
     },
     setup() {
+
+      const { router } = useRouter();
+
       const {
         user,
         loading
       } = useState("auth", ["user", "loading"]);
       const {
         login_with_github,
-        logout
       } = useActions("auth", [
         "login_with_github",
-        "logout",
       ]);
+
+
+      watch(user, ()=>{
+        if(user.value){
+          router.push('/messages');
+        }
+      });
 
       return {
         user,
         loading,
         login_with_github,
-        logout,
       };
     },
   };

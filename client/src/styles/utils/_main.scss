@@ -1,3 +1,5 @@
+@import '../abstracts/variables';
+
 .mr-2 {
     margin-right: 2rem;
 }
@@ -8,4 +10,17 @@
 
 .mt-4 {
     margin-top: 4rem;
+}
+
+.txt-primary {
+    color: $text_primary;
+}
+.txt-primary-dark {
+    color: $text_primary_dark;
+}
+.txt-secondary {
+    color: $text_secondary;
+}
+.txt-light {
+    color: $text_light;
 }

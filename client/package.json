@@ -12,7 +12,13 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@feathersjs/client": "^4.5.11",
+    "@feathersjs/socketio-client": "^4.5.11",
+    "@u3u/vue-hooks": "^2.0.1",
+    "@vue/composition-api": "^1.0.0-rc.5",
     "core-js": "^3.6.5",
+    "feathers-vuex": "^3.16.0",
+    "socket.io-client": "^2.3.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

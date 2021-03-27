@@ -11,7 +11,7 @@
 
     html,
     body {
-      background: #142033;
+      background: #2b0d2c;
     }
 
     .app {
@@ -33,6 +33,11 @@
       margin-bottom: 0;
     }
 
+    .app img {
+      margin-bottom: 0;
+      width: 90%;
+    }
+
     .app p {
       color: pink;
       font-family: 'Acme';
@@ -50,10 +55,23 @@
 
 <body>
   <div class="app">
-    <h1>ZenChat</h1>
+    <img src="./bacground.png" alt="">
 
-    <p>Logging you in . . . . </p>
+    <p id="info">Go Home</p>
   </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const token = params.get('access_token');
+
+    if(window.opener && token){
+        window.opener.postMessage({token}, 'http://localhost:8080');
+    }else {
+      info.textContent = "Go Home You Are Drunk!";
+    }
+
+    window.close();
+  </script>
 </body>
 
 </html>

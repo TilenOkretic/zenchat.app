@@ -20,7 +20,7 @@ export default {
     background: none;
     padding: 1rem;
     border-radius: 40px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: 330ms;
 

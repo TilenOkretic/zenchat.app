@@ -106,8 +106,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-docker-data
-
 # Others
 lib/
 data/
+
+.env
+
+docker-data

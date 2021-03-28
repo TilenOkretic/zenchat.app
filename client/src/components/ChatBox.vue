@@ -1,11 +1,35 @@
 <template>
-  <div class="chatbox">
-      <input class="chatbox__input" placeholder="write something" />
-  </div>
+  <form class="chatbox" @submit="send_message()">
+      <input v-model="message" class="chatbox__input" placeholder="write something" />
+  </form>
 </template>
 
 <script>
+
+import { ref } from '@vue/composition-api';
+import { useState, useActions } from '@u3u/vue-hooks';
+
 export default {
+
+    setup() {
+
+        const message = ref('');
+
+        const { user } = useState('auth', ['user']);
+
+        const { createMessage } = useActions('messages', ['createMessage']);
+
+        const send_message = () => {
+            createMessage({ text: message.value, user_id: user.value._id});
+            message.value = '';
+        }
+
+        return {
+            send_message,
+            message
+        }
+
+    }
 
 }
 </script>

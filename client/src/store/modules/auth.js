@@ -50,7 +50,7 @@ export default {
             window.addEventListener('message', receive_message, {
                 once: true
             });
-            window.open('http://localhost:4040/oauth/github', '_blank', 'top=1500,left=1200,frame=false');
+            window.open('http://localhost:4040/oauth/github');
         },
         async logout({
             state

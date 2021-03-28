@@ -52,8 +52,8 @@ align-items: center;
     height: 90%;
     outline: none;
     border: none;
-    font-size: 2rem;
-    padding: 20px;
+    font-size: 1rem;
+    padding: 0 1rem;
     border-radius: 20px;
     margin-bottom: 10px;
     transition: 330ms;
@@ -61,7 +61,7 @@ align-items: center;
     &::placeholder {
         color: rgba(0, 0, 0, 0.50);
         text-transform: uppercase;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
 }
 
@@ -71,8 +71,8 @@ align-items: center;
     height: 95%;
     outline: none;
     border: none;
-    font-size: 2.5rem;
-    padding: 10px;
+    font-size: 1.5rem;
+    padding: 1rem;
     border-radius: 20px;
     transition: 330ms;
 

@@ -2,7 +2,7 @@
     <div class="container">
         <Navbar />
         <main class="messages__main">
-            <div>
+            <div class="messages__main--msgholder">
                 <MessageCard v-for="message in messages" :key="message._id" :message="message" />
             </div>
             <ChatBox class="messages__main--bottom" />
@@ -76,20 +76,28 @@
     @import "../styles/abstracts/variables";
 
     .container {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
         background: $bg;
+        height: 100%;
+        overflow: hidden;
     }
+
 
     .messages__main {
-        height: 100%;
-        position: relative;
-    }
 
-    .messages__main--bottom {
-        position: absolute;
-        bottom: 0;
+        height: 100%;
+        &--msgholder {
+            height: 80%;
+            margin-left: 5rem;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;         
+            scrollbar-color: $text_light $bg_dark;   
+        }
+
+        &--bottom {
+            position: absolute;
+            bottom: 0;
+        }
     }
 </style>

@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import feathers from '@feathersjs/client';
 import socketio from '@feathersjs/socketio-client';
 
+// const socket = io('http://zenchatapi.ddns.net', {transports: ['websocket']});
 const socket = io('http://localhost:4040', {transports: ['websocket']});
 const client = feathers();
 

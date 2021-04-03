@@ -20,7 +20,7 @@ export default {
         const { createMessage } = useActions('messages', ['createMessage']);
 
         const send_message = () => {
-            createMessage({ text: message.value, user_id: user.value._id});
+            createMessage({ text: message.value });
             message.value = '';
         }
 

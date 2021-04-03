@@ -91,7 +91,7 @@
   }
 
   .home img {
-    width: 50rem;
+    width: 35rem;
   }
 
   .container {

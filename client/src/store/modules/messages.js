@@ -7,7 +7,6 @@ export default {
     state: {
         loading: false,
         error: '',
-        users_by_id: {},
         messages: []
     },
     mutations: {},
@@ -15,38 +14,28 @@ export default {
         async listen({
             state
         }) {
-            const users = await feathers.service('users').find({
-                query: {
-                    $limit: 100
-                }
-            });
-         
-            state.users_by_id = users.data.reduce((by_id, user) => {
-                by_id[user._id] = user;
-                return by_id;
-            },{});
-         
+
             const messages = await feathers.service('messages').find({
                 query: {
                     $sort: { createdAt: 1 } 
                 }
-            });
+            }); 
 
-
-            state.messages = messages.data.map((message) => {
-                message.user = state.users_by_id[message.user_id];
-                return message;
-            });
+            state.messages = messages.data;
             
             feathers.service('messages').off('created', listener);
             listener = (message) => {
-                message.user = state.users_by_id[message.user_id];
-                state.messages.push(message); 
+                state.messages.push(message);
             }
-            feathers.service('messages').on('created', listener);
+            await feathers.service('messages').on('created', listener);
+            var area = document.querySelector('.messages__main--msgholder');
+            area.scrollTop = area.scrollHeight;
+            
         },
         async createMessage(_,message){
             const created = await feathers.service('messages').create(message);
+            var area = document.querySelector('.messages__main--msgholder');
+            area.scrollTop = area.scrollHeight;
         }
     }
 }

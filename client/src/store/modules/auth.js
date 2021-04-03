@@ -30,6 +30,7 @@ export default {
             state.loading = true;
             async function receive_message(event) {
 
+                // if (event.origin != 'http://zenchatapi.ddns.net/') {
                 if (event.origin != 'http://localhost:4040') {
                     console.error('Invalid origin', event.origin);
                 } else {
@@ -50,6 +51,7 @@ export default {
             window.addEventListener('message', receive_message, {
                 once: true
             });
+            // window.open('http://zenchatapi.ddns.net/oauth/github');
             window.open('http://localhost:4040/oauth/github');
         },
         async logout({

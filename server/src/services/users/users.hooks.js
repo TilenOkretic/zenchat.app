@@ -15,9 +15,9 @@ module.exports = {
     all: [],
     find: [authenticate('jwt'), limitToUser ],
     get: [authenticate('jwt'), limitToUser ],
-    create: [ internalOnly ],
-    update: [ internalOnly ],
-    patch:  [ internalOnly ],
+    create: [  ],
+    update: [  ],
+    patch:  [  ],
     remove: [authenticate('jwt'), limitToUser ]
   },
 

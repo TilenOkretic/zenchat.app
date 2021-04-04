@@ -30,8 +30,8 @@ export default {
             state.loading = true;
             async function receive_message(event) {
 
-                // if (event.origin != 'http://zenchatapi.ddns.net/') {
-                if (event.origin != 'http://localhost:4040') {
+                if (event.origin != 'https://api.zenchat.mywire.org/') {
+                // if (event.origin != 'http://localhost:4040') {
                     console.error('Invalid origin', event.origin);
                 } else {
 
@@ -42,17 +42,19 @@ export default {
                         accessToken: event.data.token,
                     });
 
+                    console.log(user);
+
                     await new Promise((resolve) => setTimeout(resolve, 2500));
                     state.user = user;
-                    state.loading = false;
                 }
+                state.loading = false;
             }
 
             window.addEventListener('message', receive_message, {
                 once: true
             });
-            // window.open('http://zenchatapi.ddns.net/oauth/github');
-            window.open('http://localhost:4040/oauth/github');
+            window.open('https://api.zenchat.mywire.org/oauth/github');
+            // window.open('http://localhost:4040/oauth/github');
         },
         async logout({
             state
